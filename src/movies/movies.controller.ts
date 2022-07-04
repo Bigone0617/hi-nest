@@ -17,7 +17,6 @@ export class MoviesController {
 
   @Get()
   getAll(): Movie[] {
-    console.log(1111);
     return this.movieService.getAll();
   }
 
@@ -43,9 +42,6 @@ export class MoviesController {
 
   @Patch(':id')
   patch(@Param('id') movieId: string, @Body() updateData) {
-    return {
-      updateMovie: movieId,
-      ...updateData,
-    };
+    return this.movieService.updateMovie(movieId, updateData);
   }
 }
